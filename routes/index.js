@@ -3,6 +3,18 @@ const DoctorController = require('../controllers/doctor')
 const UserController = require('../controllers/user')
 const DoctorUserController = require('../controllers/doctorUser')
 
+// =============================== Session ==============================
+const loginMiddlewareDoctor= (req,res,next) => {
+
+    if (req.session.doctor && req.session.doctor.id) {
+        next()
+    } else {
+        res.send('login dulu ya...')
+    }
+}
+
+
+
 // ==================================== DOCTOR ===============================
 
 router.get('/doctors/:locationId/:SpecialisasiId', DoctorController.showAll) //untuk pencarian berdasarkan lokasi dan spesialisasi
@@ -16,15 +28,24 @@ router.get('/doctors/login', (req,res) => {
 })
 router.post('/doctors/login', DoctorController.login) //untuk login
 
-router.get('/doctors/:DoctorId', DoctorController.showOne) //untuk menampilkan daftar appoinment dokter bisa diaprove/tidak
+router.get('/doctors/:DoctorId', loginMiddlewareDoctor, DoctorController.showOne) //untuk menampilkan daftar appoinment dokter bisa diaprove/tidak
 
-router.get('/doctors/:DoctorId/edit/:DoctorUserId', (req,res) => {
+router.get('/doctors/:DoctorId/edit/:DoctorUserId', loginMiddlewareDoctor, (req,res) => {
     res.render('editStatus')
 })
-router.post('/doctors/:DoctorId/edit/:DoctorUserId', DoctorUserController.edit) //untuk menanggapi appoinment
+router.post('/doctors/:DoctorId/edit/:DoctorUserId', loginMiddlewareDoctor, DoctorUserController.edit) //untuk menanggapi appoinment
 
 
 // ==================================== USER ===============================
+
+const loginMiddlewareUser= (req,res,next) => {
+    if (req.session.user && req.session.user.id) {
+        next()
+    } else {
+        res.redirect('/')
+    }
+}
+
 router.get('/users/register', (req,res) => {
     res.render('registerUser')
 })
@@ -35,7 +56,7 @@ router.get('/users/login', (req,res) => {
 })
 router.post('/users/login', UserController.login) //untuk login
 
-router.get('/users/:UserId/search/doctors', (req,res) => {
+router.get('/users/:UserId/search/doctors', loginMiddlewareUser, (req,res) => {
     res.render('searchDoctor')
 })
 router.post('/users/:UserId/search/doctors', DoctorController.showAll) //untuk cari dokter
