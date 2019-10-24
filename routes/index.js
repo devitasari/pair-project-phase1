@@ -82,8 +82,14 @@ router.get('/users/logout', loginMiddlewareUser, UserController.logout)
 
 
 // ========================================================= DUMMY ========================================================================
-// router.get('/home', (req,res) => res.render('home'))
-// router.get('/users', (req,res) => res.render('homeUser'))
-// router.get('/doctors', (req,res) => res.render('homeDoctor'))
+router.get('/', (req,res) => res.render('index'))
+router.get('/loginregister', (req,res) => res.render('loginregister'))
+router.get('/users', (req,res) => res.render('homeUser'))
+router.get('/doctors', (req,res) => res.render('homeDoctor'))
+router.get('/search', (req,res) => res.render('searchResult'))
+router.get('/dummy', (req,res) => res.render('dummyView'))
+router.get('/index', (req,res) => res.render('index'))
+
+
 
 module.exports = router

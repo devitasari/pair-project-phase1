@@ -1,337 +1,563 @@
 <!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>DocLoc</title>
-    <style>
-        .btn-glass {
-        flex-grow: 1;
-        text-align: center;
-        display: inline-block;
-        color: rgba(255, 255, 255, 0.7);
-        text-decoration: none;
-        padding: 1em 2em;
-        font-family: Lato;
-        font-weight: 300;
-        border: 1px dotted transparent;
-        letter-spacing: 0.98pt;
-        text-transform: uppercase;
-        transition: background-position 2s cubic-bezier(0, 1, 0, 1), border-color 500ms, background-color 500ms;
-        position: relative;
-        background-attachment: fixed, scroll;
-        background-size: 100vw 100vh, cover;
-        background-position: center center, 0 0;
-        background-image: repeating-linear-gradient(-45deg, rgba(255, 255, 255, 0) 8%, rgba(255, 255, 255, 0.075) 10%, rgba(255, 255, 255, 0.075) 14%, rgba(255, 255, 255, 0.15) 14%, rgba(255, 255, 255, 0.15) 15%, rgba(255, 255, 255, 0.075) 17%, rgba(255, 255, 255, 0) 30%, rgba(255, 255, 255, 0) 36%, rgba(255, 255, 255, 0.075) 40%, rgba(255, 255, 255, 0.15) 42%, rgba(255, 255, 255, 0) 43%, rgba(255, 255, 255, 0) 55%, rgba(255, 255, 255, 0.075) 60%, rgba(255, 255, 255, 0.075) 66%, rgba(255, 255, 255, 0.15) 66%, rgba(255, 255, 255, 0.075) 70%, rgba(255, 255, 255, 0) 75%, rgba(255, 255, 255, 0) 100%), radial-gradient(ellipse farthest-corner, transparent, rgba(0, 0, 0, 0.2) 110%);
-        }
-        .btn-glass:hover {
-        background-position: -100vw 0, 0 0;
-        }
-        .btn-glass:active {
-        background-position: -75vw 0, 0 0;
-        border-style: solid;
-        }
-        .nav-light {
-        background-color: white;
-        }
-        .nav-light .btn-glass {
-        color: #585858;
-        background-color: rgba(17, 17, 17, 0);
-        }
-        .nav-light .btn-glass:hover {
-        color: rgba(255, 255, 255, 0.7);
-        border-color: #000000;
-        background-color: #111111;
-        }
-        .nav-light .btn-glass:active {
-        position: relative;
-        z-index: 1;
-        box-shadow: 0 0 1em 0.5ex rgba(17, 17, 17, 0.5);
-        }
-        .nav-light .btn-glass.btn-primary {
-        color: #6ab1d1;
-        background-color: rgba(42, 143, 189, 0);
-        }
-        .nav-light .btn-glass.btn-primary:hover {
-        color: rgba(255, 255, 255, 0.7);
-        border-color: #1c607e;
-        background-color: #2a8fbd;
-        }
-        .nav-light .btn-glass.btn-primary:active {
-        position: relative;
-        z-index: 1;
-        box-shadow: 0 0 1em 0.5ex rgba(42, 143, 189, 0.5);
-        }
-        .nav-light .btn-glass.btn-success {
-        color: #a5c75f;
-        background-color: rgba(127, 175, 27, 0);
-        }
-        .nav-light .btn-glass.btn-success:hover {
-        color: rgba(255, 255, 255, 0.7);
-        border-color: #4f6d11;
-        background-color: #7faf1b;
-        }
-        .nav-light .btn-glass.btn-success:active {
-        position: relative;
-        z-index: 1;
-        box-shadow: 0 0 1em 0.5ex rgba(127, 175, 27, 0.5);
-        }
-        .nav-light .btn-glass.btn-warning {
-        color: #fccd69;
-        background-color: rgba(251, 184, 41, 0);
-        }
-        .nav-light .btn-glass.btn-warning:hover {
-        color: rgba(255, 255, 255, 0.7);
-        border-color: #d49104;
-        background-color: #fbb829;
-        }
-        .nav-light .btn-glass.btn-warning:active {
-        position: relative;
-        z-index: 1;
-        box-shadow: 0 0 1em 0.5ex rgba(251, 184, 41, 0.5);
-        }
-        .nav-light .btn-glass.btn-danger {
-        color: #f56558;
-        background-color: rgba(240, 35, 17, 0);
-        }
-        .nav-light .btn-glass.btn-danger:hover {
-        color: rgba(255, 255, 255, 0.7);
-        border-color: #aa180b;
-        background-color: #f02311;
-        }
-        .nav-light .btn-glass.btn-danger:active {
-        position: relative;
-        z-index: 1;
-        box-shadow: 0 0 1em 0.5ex rgba(240, 35, 17, 0.5);
-        }
-        .nav-light .btn-glass.btn-info {
-        color: #98e9f0;
-        background-color: rgba(108, 223, 234, 0);
-        }
-        .nav-light .btn-glass.btn-info:hover {
-        color: rgba(255, 255, 255, 0.7);
-        border-color: #29d0e0;
-        background-color: #6cdfea;
-        }
-        .nav-light .btn-glass.btn-info:active {
-        position: relative;
-        z-index: 1;
-        box-shadow: 0 0 1em 0.5ex rgba(108, 223, 234, 0.5);
-        }
-        .nav-dark {
-        background-color: #444444;
-        }
-        .nav-dark .btn-glass {
-        color: rgba(255, 255, 255, 0.7);
-        background-color: rgba(17, 17, 17, 0);
-        }
-        .nav-dark .btn-glass:hover {
-        border-color: #000000;
-        background-color: #111111;
-        }
-        .nav-dark .btn-glass:active {
-        position: relative;
-        z-index: 1;
-        box-shadow: 0 0 1em 0.5ex rgba(17, 17, 17, 0.5);
-        }
-        .nav-dark .btn-glass.btn-primary {
-        color: rgba(255, 255, 255, 0.7);
-        background-color: rgba(42, 143, 189, 0);
-        }
-        .nav-dark .btn-glass.btn-primary:hover {
-        border-color: #1c607e;
-        background-color: #2a8fbd;
-        }
-        .nav-dark .btn-glass.btn-primary:active {
-        position: relative;
-        z-index: 1;
-        box-shadow: 0 0 1em 0.5ex rgba(42, 143, 189, 0.5);
-        }
-        .nav-dark .btn-glass.btn-success {
-        color: rgba(255, 255, 255, 0.7);
-        background-color: rgba(127, 175, 27, 0);
-        }
-        .nav-dark .btn-glass.btn-success:hover {
-        border-color: #4f6d11;
-        background-color: #7faf1b;
-        }
-        .nav-dark .btn-glass.btn-success:active {
-        position: relative;
-        z-index: 1;
-        box-shadow: 0 0 1em 0.5ex rgba(127, 175, 27, 0.5);
-        }
-        .nav-dark .btn-glass.btn-warning {
-        color: rgba(255, 255, 255, 0.7);
-        background-color: rgba(251, 184, 41, 0);
-        }
-        .nav-dark .btn-glass.btn-warning:hover {
-        border-color: #d49104;
-        background-color: #fbb829;
-        }
-        .nav-dark .btn-glass.btn-warning:active {
-        position: relative;
-        z-index: 1;
-        box-shadow: 0 0 1em 0.5ex rgba(251, 184, 41, 0.5);
-        }
-        .nav-dark .btn-glass.btn-danger {
-        color: rgba(255, 255, 255, 0.7);
-        background-color: rgba(240, 35, 17, 0);
-        }
-        .nav-dark .btn-glass.btn-danger:hover {
-        border-color: #aa180b;
-        background-color: #f02311;
-        }
-        .nav-dark .btn-glass.btn-danger:active {
-        position: relative;
-        z-index: 1;
-        box-shadow: 0 0 1em 0.5ex rgba(240, 35, 17, 0.5);
-        }
-        .nav-dark .btn-glass.btn-info {
-        color: rgba(255, 255, 255, 0.7);
-        background-color: rgba(108, 223, 234, 0);
-        }
-        .nav-dark .btn-glass.btn-info:hover {
-        border-color: #29d0e0;
-        background-color: #6cdfea;
-        }
-        .nav-dark .btn-glass.btn-info:active {
-        position: relative;
-        z-index: 1;
-        box-shadow: 0 0 1em 0.5ex rgba(108, 223, 234, 0.5);
-        }
-        nav.btn-bar {
-        display: flex;
-        justify-content: flex-end;
-        flex-wrap: wrap;
-        }
-        :root {
-        font-family: 'Open Sans', sans;
-        font-size: 11pt;
-        line-height: 1.6;
-        min-height: 100vh;
-        background-attachment: fixed, scroll;
-        background-image: url(https://s3-us-west-2.amazonaws.com/s.cdpn.io/49914/grit-fs8.png), radial-gradient(ellipse farthest-corner, #555555, #999999);
-        }
-        body {
-        width: 75vw;
-        margin: 4em auto;
-        line-height: inherit;
-        }
-        article {
-        padding: 0;
-        border: 2px solid transparent;
-        border-radius: 2px;
-        box-sizing: border-box;
-        background-color: white;
-        box-shadow: 0 1ex 1em rgba(0, 0, 0, 0.3);
-        }
-        code {
-        font-family: monospace;
-        display: inline-block;
-        padding: 0.5ex 1ch 0.25ex 1ch;
-        background-color: #ccc;
-        border-radius: 1ex;
-        margin: 0 0.5ch;
-        }
-        article + article {
-        margin-top: 4em;
-        }
-        article section {
-        margin: 2em;
-        }
-        article > section > h2 {
-        font-family: 'Lato';
-        font-weight: 800;
-        font-size: 1.3em;
-        margin-bottom: 0.8em;
-        }
-        article > section > p {
-        margin-bottom: 1em;
-        text-indent: 2ch;
-        }
-        article > section > p:first-child,
-        article > section > h2 + p {
-        text-indent: 0;
-        }
-        h1 {
-        font-family: 'Lato';
-        font-weight: 800;
-        text-align: center;
-        font-size: 5vw;
-        color: rgba(255, 255, 255, 0.3);
-        }
-    </style>
-</head>
-<body>
-        <h1 >Welcome to DocLoc </h1>
+<html>
+    <head id="head">
+        <link href="style.css" type="text/css" rel="stylesheet"/>        
+        <link href="https://fonts.googleapis.com/css?family=Lato&display=swap" rel="stylesheet">
+        <link href="/views/style.css" type="text/css" rel="stylesheet"/>
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+        <title id="title">DocLoc</title>
+        <style>
+          /*----------INDEX PAGE----------*/
+          * {
+              margin:0;
+              padding:0;
+              font-family: Lato;
+              box-sizing: border-box;
+              /* border: 1px solid red; */
+          }
 
-        <article>
-          <nav class="btn-bar nav-light">
-            <a href="#" class="btn btn-glass">
-              Register
-            </a>
-            <a href="#" class="btn btn-glass btn-primary">
-              <i class="fa fa-fw fa-lg fa-chevron-right"></i> Login
-            </a>
-          </nav>
-        </article>
-        
-        <article>
-          <nav class="btn-bar nav-dark">
-            <a href="#" class="btn btn-glass">
-              Register
-            </a>
-            <a href="#" class="btn btn-glass btn-primary">
-              <i class="fa fa-fw fa-lg fa-chevron-right"></i> Login
-            </a>
-            <a href="#" class="btn btn-glass btn-success">
-              <i class="fa fa-fw fa-lg fa-check"></i> Success
-            </a>
-            <a href="#" class="btn btn-glass btn-warning">
-              <i class="fa fa-fw fa-lg fa-exclamation "></i> Warning
-            </a>
-            <a href="#" class="btn btn-glass btn-danger">
-              <i class="fa fa-fw fa-lg fa-times"></i> Danger
-            </a>
-            <a href="#" class="btn btn-glass btn-info">
-              <i class="fa fa-fw fa-lg fa-info "></i> Info
-            </a>
-          </nav>
-        </article>
-        
-        <article>
-          <section>
-            Are you sure you want to delete <code>somefile.txt</code>?
-          </section>
-          <nav class="btn-bar nav-light">
-            <a href="#" class="btn btn-glass btn-success">
-              <i class="fa fa-fw fa-lg fa-check"></i> Ok
-            </a>
-            <a href="#" class="btn btn-glass btn-danger">
-              <i class="fa fa-fw fa-lg fa-times"></i> No
-            </a>
-          </nav>
-        </article>
-        
-        <article>
-          <section>
-            <h2>Check out when they scroll...</h2>
-            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Impedit, nisi voluptate tempora ea molestias vel! Mollitia architecto, accusamus nulla rerum magnam, nisi, facilis praesentium, aut quia placeat tempora voluptatem repudiandae!</p>
-            <p>Nesciunt, molestias commodi totam vitae, voluptates debitis repellendus modi dicta dolores dolorem beatae laboriosam eaque, sed. Dolorem fuga voluptatibus vero eveniet iure. Sed nemo saepe delectus, expedita asperiores, dolor illo.</p>
-            <p>Cum aspernatur, quidem dolorum accusamus quod vel, rem inventore tempora voluptas dolore deserunt eveniet doloribus obcaecati nesciunt error in illum, molestias explicabo corrupti commodi natus dicta placeat. A, laudantium, impedit.</p>
-          </section>
-          <nav class="btn-bar nav-dark">
-            <a href="#" class="btn btn-glass btn-success">
-              <i class="fa fa-fw fa-lg fa-check"></i> Approve
-            </a>
-            <a href="#" class="btn btn-glass btn-danger">
-              <i class="fa fa-fw fa-lg fa-times"></i> Reject
-            </a>
-            <a href="#" class="btn btn-glass btn-info">
-              <i class="fa fa-fw fa-lg fa-code"></i> Diff
-            </a>
-          </nav>
-        </article>
-</body>
+          body, html {
+              box-sizing: border-box;
+              width: 100%;
+          }
+
+          /*----------MENU----------*/
+
+          #menu {
+              background-color: white;
+              width: 100%;
+              position: fixed;
+              top: 0;
+              height: 50px;
+              z-index: 2;
+          }
+
+          #menu ul {
+              list-style-type: none;  
+              height: 40px;  
+          }
+
+          #menu li {
+              display: inline-block;
+              padding: 10px 20px;
+          }
+
+          #menu a {
+              text-decoration: none;
+              color: black;
+          }
+
+          #menu i {
+              margin-right: 5px;
+          }
+
+          /*----------BERANDA----------*/
+
+          #beranda {
+              width: 100%;
+              height: 100%;
+              
+              /* Flexbox stuff */
+              display: flex;
+              justify-content: center;
+              align-items: center;
+              
+              /* Text styles */
+              text-align: center;
+
+              background-image: url(https://static.wixstatic.com/media/d8b982_5fb600ab018d4637acdd8c7a4faa258b~mv2_d_4160_3120_s_4_2.jpg/v1/fill/w_4160,h_3120/IMG_20171123_123934.jpg);
+              background-size: cover;
+              background-position: center;
+              background-repeat: no-repeat;
+            /*height: 550px;*/  
+              height: 92vh;
+              background-attachment: fixed;
+              
+          }   
+
+          .halamanberanda h1 {
+              /* Text styles */
+              font-size: 10em;
+              color: whitesmoke;
+              letter-spacing: 20px;
+              /* text-shadow: rgb(252, 252, 247) 1px 0 10px; */
+                  /* Margins */
+              padding-top: 10px;
+              margin-bottom: 0.5px;
+          }
+
+          .halamanberanda h4 {
+              /* Text styles */
+              /* font-size:10px; */
+              color: white;
+              letter-spacing: 5px;
+              
+              /* Margins */
+              padding-top: 0px;
+              margin-bottom: 0.5px;
+          }
+          .halamanberanda p {
+              color: white;
+              letter-spacing: 5px;
+          }
+
+          .halamanberanda-container {
+              height: 100px;
+              background-color: whitesmoke;
+              box-sizing: border-box;
+          }    
+            /* ------TENTANG-----*/
+            #tentang {
+              width: 100%;
+              height: 100%;
+              
+              /* Flexbox stuff */
+              display: flex;
+              justify-content: center;
+              align-items: center;
+              
+              /* Text styles */
+              text-align: center;
+
+              background-color: rgb(219, 215, 215);
+              background-size: cover;
+              background-position: center;
+              background-repeat: no-repeat;
+            /*height: 550px;*/  
+              height: 92vh;
+              background-attachment: fixed;
+              
+          }  
+              #tentang h2 {
+              /* Text styles */
+              font-size: 40px;
+              color: black;
+              /*background-color: #b3afaf;*/
+              letter-spacing: 5px;
+              /* text-shadow: rgb(252, 252, 247) 1px 0 10px; */
+              padding-top: 10px;
+              margin-bottom: 0.5px;
+              text-align: center;
+          }
+              .halamantentang p {
+              /* Text styles */
+              /* font-size:10px; */
+              color: black;
+              text-align: center;
+              margin-right: 100px;
+              margin-left: 100px; 
+              padding-top: 0px;
+              margin-bottom: 0.5px;
+          }
+
+          /*----------NILAI-------------*/
+          #nilai {
+              width: 100%;
+              height: 100%;
+              
+              /* Flexbox stuff */
+              display: flex;
+              justify-content: center;
+              align-items: center;
+              
+              /* Text styles */
+              text-align: center;
+
+              background-color: rgb(219, 215, 215);
+              background-size: cover;
+              background-position: center;
+              background-repeat: no-repeat;
+              height: 92vh;
+              background-attachment: fixed;
+          }
+          #nilai ul {
+              list-style-type: none;  
+              height: 40px;  
+          }
+
+          #nilai li {
+              display: inline-block;
+              padding: 0px 30px;
+          }
+
+          #nilai a {
+              text-decoration: none;
+              color: black;
+          }
+
+          #nilai i {
+              margin-right: 10px;
+          }
+          @media (max-width: 700px) 
+
+          /*------------PRODUK------------*/
+          { #produk {
+              width: 100%;
+              height: 100%;
+              /* Flexbox stuff */
+              display: flex;
+              justify-content: center;
+              align-items: center;
+              /* Text styles */
+              text-align: center;
+              background-color: white;
+              background-size: cover;
+              background-position: center;
+              background-repeat: no-repeat;
+              height: 100vh;
+              background-attachment: fixed;
+          }
+          #varianproduk {
+              text-align: center;
+              margin: 30px;
+          }
+          .var{
+              background-color: #EEEEE7;
+              width: 250px;
+              margin: 20px 10px;   
+              display: inline-block;
+              box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+          }
+          .halamanproduk h2 {
+              /* Text styles */
+              font-size: 40px;
+              color: black;
+              /*background-color: #b3afaf;*/
+              letter-spacing: 5px;
+              /* text-shadow: rgb(252, 252, 247) 1px 0 10px; */
+              padding-top: 10px;
+              margin-top: 20px;
+              margin-bottom: 0.5px;
+              text-align: center;
+          }
+          .var h4,h5{
+              text-align: center;
+              font-weight: 100;
+              color: #5f5f5f;
+          }
+          .var h5{
+              font-style: italic;
+          }
+          .gambarproduk img{
+              object-fit: cover;
+              background-position: center; 
+              background-repeat: no-repeat;
+              width: 100%;
+              height: 200px;
+          }
+          .order{
+              text-align: center;
+              margin: 5px 1px;
+          }
+
+          @media (max-width: 700px) 
+          /*----------KONTAK--------*/
+
+
+          { #kontak1 {
+              width: 100%;
+              background-color: rgb(219, 215, 215);
+              background-size: cover;
+              height: 550px;
+              background-attachment: fixed;
+              background-position: center;
+              background-repeat: no-repeat;
+          }
+
+          #kontak1 h2 {
+                font-size: 40px;
+                color: black;
+                letter-spacing: 5px;
+                padding-top: 10px;
+                margin-bottom: 0.5px;
+                text-align: center;
+          }
+          #kontak1 p {
+              text-align: center;
+          }
+
+          .kontainerkontak {
+              display: flex;
+              margin: 5% auto;
+              box-sizing: border-box;
+              text-align: center;
+              flex-direction: column;
+          }
+
+          .kontainerkontak iframe {
+              box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+          }
+          .formkontak {
+              margin: 5px auto;
+          }
+          .formkontak form{
+            display: inline-grid;
+          }
+
+          .formkontak input {
+              width: 700px;
+              height: 50px;
+              margin-bottom: 15px;
+          }
+
+          .formkontak textarea {
+              border-radius: 3px;
+              width: 700px;
+              margin-bottom: 15px;
+          }
+
+          .formkontak #submit {
+              width: 100px;
+              float: right;
+          }
+          .formkontak #submit:hover {
+              width: 100px;
+              float: right;
+              background-color: #5f5f5f;
+              color: #fff;
+              border-radius: 5px;
+          }
+
+
+          #kontak2 {
+              width: 100%;
+              background-color: rgb(219, 215, 215);
+              background-size: cover;
+              height: 550px;
+              background-attachment: fixed;
+              background-position: center;
+              background-repeat: no-repeat;
+          }
+          .infokontak {
+              text-align: left;
+              width: 100%;
+              margin-left: 10px;
+          }
+
+          .peta {
+              margin: 80px 200px 80px 80px;
+          }
+
+
+          @media (max-width: 767px) {
+              .contact-banner {
+                  height: 400px;
+              }
+              #kontak h1 {
+                  padding: 0 10px;
+                  font-size: 30px;
+                  margin-top: 50px;
+              }
+              .kontainerkontak {
+                  flex-direction: column;
+              }
+
+              .kontainerkontak input{
+                  width: 300px;
+                  margin-left: 20px;
+              }
+              .formkontak textarea{
+                  width: 300px;
+                  margin-left: 20px;
+              }
+
+              .peta iframe{
+                  width: 300px;
+              }
+          }
+          @media (max-width: 1000px){
+              .kontainerkontak {
+                  flex-direction: column;
+              }
+
+              .formkontak {
+                  margin: 50px auto;
+              }
+
+              .peta {
+                  margin:5px auto;
+              }
+
+          }
+          */
+          /*----------FOOTER----------*/
+
+          footer {
+              background-color: white;
+              width: 100%;
+              position: fixed;
+              bottom: 0;
+              height: 50px;
+              z-index: 6;
+          }}}
+        </style>
+    </head>
+
+    <body>
+        <!--membuat menu-->
+        <header id="menu">
+         <ul>
+            <li><a href="#beranda">
+            <img src="https://static.wixstatic.com/media/d8b982_8800207c9ce64d4ab5c03637a5398837~mv2.png/v1/fill/w_205,h_85,al_c,q_80,usm_0.66_1.00_0.01/d8b982_8800207c9ce64d4ab5c03637a5398837~mv2.webp"
+                    height="30px"/></a></li>
+            <li><a href="#tentang"><i class="fa fa-user"></i> Tentang Fermentea </a></li>
+            <li><a href="#produk"><i class="fa fa-coffee"></i> Produk </a></li>
+            <li><a href="#kontak2"><i class="fa fa-envelope"></i> Kontak </a></li>
+         </ul>  
+        </header>
+        <!--membuat beranda--> 
+        <section id="beranda">
+            <div class="halamanberanda">
+                <h1>Fermentea</h1>
+                <br>
+                <h4>
+                    Spark your healthy life
+                </h4>
+            </div>
+        </section>
+        <!--membuat tentang-->
+        <section id="tentang">
+            <div class="halamantentang">
+                <h2>Tentang Fermentea</h2>
+                <br>
+                <p>Fermentea adalah minuman fermentasi yang terbuat dari berbagai varian teh.</p> 
+                <p>Fermentea memiliki citarasa asam, manis dengan sensasi sparkling.</p>
+                <p>Fermentea mengandung probiotik yang baik bagi kesehatan tubuh Anda.</p>
+                <p>Variasi berbagai jenis teh juga menambah manfaat zat aktif tertentu yang baik bagi kesehatan.</p>
+            </div>    
+        </section>
+        <section id="nilai">
+            <div class="halamannilai"> 
+                <ul>
+                    <li><i class="fa fa-glass" style="font-size:80px"></i>
+                        <br>
+                        <br>
+                        <strong>Asam Manis</strong>
+                        <br>
+                        Sensasi manis dari gula alami dan
+                        <br>asam dari proses fermentasi
+                    </li>
+                    <li><i class="fa fa-snowflake-o" style="font-size:80px"></i>
+                        <br>
+                        <br>
+                        <strong>Sparkling</strong>
+                        <br>
+                        Efek <em>after taste</em> yang timbul
+                        <br> seperti saat meminum soda
+                    </li>
+                    <li><i class="fa fa-diamond" style="font-size:80px"></i>
+                        <br>
+                        <br>
+                        <strong>Probiotik</strong>
+                        <br>
+                        Mikroorganisme yang baik untuk
+                        <br>kesehatan tubuh
+                    </li>
+                    <li><i class="fa fa-heartbeat" style="font-size:80px"></i>
+                        <br>
+                        <br>
+                        <strong>Antibiotik</strong>
+                        <br>
+                        Zat aktif yang baik untuk
+                        <br> meningkatkan imunitas
+                    </li>
+                </ul>
+            </div>
+        </section>
+        <!--membuat produk-->
+        <section id="produk">
+            <div class="halamanproduk">
+                <h2>Variasi Produk Fermentea</h2>
+                <br> 
+        <section id="varianproduk">
+                <div class="var">
+                        <div class="gambarproduk">
+                        <img src="https://static.wixstatic.com/media/d8b982_c0d5c90f482f4de6a66e5367620fb0ca~mv2_d_5184_2912_s_4_2.jpg/v1/fill/w_740,h_416,al_c,q_90,usm_0.66_1.00_0.01/d8b982_c0d5c90f482f4de6a66e5367620fb0ca~mv2_d_5184_2912_s_4_2.webp" alt="Daun Kelor">
+                        </div>
+                        <h4>Daun Kelor</h4>
+                        <h5>Drumstick tree</h5>
+                        <div class="order"></div>
+                        <button><i class="fa fa-shopping-cart"></i> Order</button>
+                </div>   
+                
+                <div class="var">
+                        <div class="gambarproduk">
+                        <img src="https://static.wixstatic.com/media/d8b982_7e315e2018cb4964b816a012ecd1d826~mv2_d_5184_2912_s_4_2.jpg/v1/fill/w_740,h_416,al_c,q_90,usm_0.66_1.00_0.01/d8b982_7e315e2018cb4964b816a012ecd1d826~mv2_d_5184_2912_s_4_2.webp" alt="Teh Hitam">
+                        </div>
+                        <h4>Teh Hitam</h4>
+                        <h5>Camelia sinensis</h5>
+                        <div class="order"></div>
+                        <button><i class="fa fa-shopping-cart"></i> Order</button>
+                </div>  
+                
+                <div class="var">
+                        <div class="gambarproduk">
+                        <img src="https://static.wixstatic.com/media/d8b982_8570bc8badda436a83c7338ca5f3ea01~mv2_d_5184_2912_s_4_2.jpg/v1/fill/w_740,h_416,al_c,q_90,usm_0.66_1.00_0.01/d8b982_8570bc8badda436a83c7338ca5f3ea01~mv2_d_5184_2912_s_4_2.webp" alt="Bunga Telang">
+                        </div>
+                        <h4>Bunga Telang</h4>
+                        <h5>Clitoria ternatae</h5>
+                        <div class="order"></div>
+                        <button><i class="fa fa-shopping-cart"></i> Order</button>
+                </div>  
+
+                <div class="var">
+                        <div class="gambarproduk">
+                        <img src="https://static.wixstatic.com/media/d8b982_7e315e2018cb4964b816a012ecd1d826~mv2_d_5184_2912_s_4_2.jpg/v1/fill/w_740,h_416,al_c,q_90,usm_0.66_1.00_0.01/d8b982_7e315e2018cb4964b816a012ecd1d826~mv2_d_5184_2912_s_4_2.webp" alt="Teh Hitam">
+                        </div>
+                        <h4>Teh Hijau</h4>
+                        <h5>Camelia greenensis</h5>
+                        <div class="order"></div>
+                        <button><i class="fa fa-shopping-cart"></i> Order</button>
+            </div>
+        </section>
+        <!--membuat kontak-->
+        <section id="kontak1">
+            <div class="halamankontak1">
+                <h2>Kontak</h2>
+                <br>
+                <p>Jika Anda membutuhkan informasi tambahan, pertanyaan, atau ingin<br> 
+                    memberi saran, mohon dengan senang hati mengisi form berikut.</p>
+            </div>
+            <div class="kontainerkontak">
+                <div class="formkontak">
+                        <form action="#" method="PUSH">
+                                <input type="text" placeholder="Nama">
+                                <input type="email" placeholder="Email">
+                                <input type="subject" placeholder="Judul">
+                                <textarea name="message" rows="12" placeholder="Ketik pesan Anda disini"></textarea>
+                                <input type="submit" name="submit" id="submit" value="submit" placeholder="Kirim"> 
+                        </form>
+                </div>
+            </div>
+        </section>
+        <section id="kontak2">
+            <div class="halamankontak2">
+                <table id="hub">
+                    <tr>
+                        <td>
+                            <div class="peta"><iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3961.0890813112633!2d107.6098290140679!3d-6.879930895028447!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2e68e6fa25ff2a15%3A0x4155f444d93fbe14!2sJl.+Cisitu+Lama%2C+Dago%2C+Kecamatan+Coblong%2C+Kota+Bandung%2C+Jawa+Barat+40135!5e0!3m2!1sen!2sid!4v1564139548957!5m2!1sen!2sid" width="600" height="350" frameborder="0" style="border:0" allowfullscreen></iframe>
+                            </div>
+                        </td>
+                        <td>
+                            <i class="fa fa-map-marker" style="font-size: 40px"></i> Bandung, Indonesia <br>
+                            <i class="fa fa-phone" style="font-size: 40px"></i> 0812-1234-4810 <br>
+                            <i class="fa fa-envelope" style="font-size: 40px"></i> fermentea@mail.id
+                        </td>
+                    </tr>
+                </table>
+        </section>
+
+        <!--membuat footer-->
+        <footer>
+            <div class="sosmed">
+                <i class="fa fa-facebook-official"></i>
+                <i class="fa fa-instagram"></i>
+                <i class="fa fa-twitter"></i>
+                <i class="fa fa-linkedin"></i>
+            </div>  
+            <div class="oleh">
+                <h5>Created by Fermentea</h5>
+            </div>
+        </footer>
+    </body>
 </html>
