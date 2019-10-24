@@ -14,6 +14,7 @@ const loginMiddlewareDoctor= (req,res,next) => {
 }
 
 router.get('/', (req,res) => res.render('home'))
+router.get('/loginregister', (req,res) => res.render('loginregister'))
 
 
 // ==================================== DOCTOR ===============================
@@ -64,6 +65,7 @@ router.get('/users/login', (req,res) => {
     res.render('loginUser')
 })
 router.post('/users/login', UserController.login) //untuk login
+router.get('/users/:UserId',  UserController.findOne) //untuk menampilkan daftar appoinment di halaman user
 
 router.get('/users/:UserId/search/doctors',  (req,res) => { 
     res.render('homeUser')
@@ -82,7 +84,6 @@ router.get('/users/:UserId/edit/:DoctorUserId',  (req,res) => {
 
 router.get('/users/:UserId/delete/:DoctorUserId',  DoctorUserController.delete)
 
-router.get('/users/:UserId',  UserController.findOne) //untuk menampilkan daftar appoinment di halaman user
 
 router.get('/users/logout',  UserController.logout)
 
@@ -96,7 +97,8 @@ router.get('/users/logout',  UserController.logout)
 // router.get('/search', (req,res) => res.render('searchResult'))
 // router.get('/dummy', (req,res) => res.render('dummyView'))
 // router.get('/index', (req,res) => res.render('index'))
-router.get('/makeAppt', (req,res) => res.render('make-appointment'))
+
+// router.get('/makeAppt', (req,res) => res.render('make-appointment'))
 
 
 

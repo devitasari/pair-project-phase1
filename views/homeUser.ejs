@@ -442,25 +442,23 @@
         <br>
         <h2 style="font-family: Arial, Helvetica, sans-serif;"> Appointment List </h2>
         <% for (let j=0; j<user.Doctors.length; j++) { %>
-          <% for (let i=0; i<user.Doctors[j].length; i++) { %>
           <article>
               <section>
                   <h2>Appointment With <%= `${user.Doctors[j].name}` %></h2>
-                  <p><%= `${user.Doctors[j].DoctorUser[i].note}` %></p>
+                  <p><%= `${user.Doctors[j].DoctorUser.note}` %></p>
               </section>
-            <div class="btn-bar nav-dark">
-              <a href="/users/<%= user.Doctors[j].DoctorUser[i].id %>/delete" class="btn btn-glass btn-danger">
-                <i class="fa fa-fw fa-lg fa-check"></i> Delete
-              </a>
-            </div>
+              <nav class="btn-bar nav-dark">
+                  <a href="/users/<%= user.id %>/delete/<%= user.Doctors[j].DoctorUser.id %>" class="btn btn-glass btn-danger">
+                    <i class="fa fa-fw fa-lg fa-check"></i> Delete
+                  </a>
+                </nav>
           </article>
-          <% } %>
         <% } %>
         <br>
         <br>
         <h2 style="font-family: Arial, Helvetica, sans-serif;"> Find Doctors </h2>
         <article>
-            <form action="/users/:UserId/search/doctors" method="POST">
+            <form action="/users/<%= user.id %>/search/doctors" method="POST">
                 <div id="box">
                     <section class="dropdownContainer" id="row inline">
                         <div class="dropdown" id="column">
