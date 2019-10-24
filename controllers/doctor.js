@@ -84,6 +84,13 @@ class DoctorController {
         });
     }
 
+    static logout(req,res) {
+            req.session.destroy(() => {
+                res.send('logout succes');
+            });
+    }
+
+
 }
 
 module.exports = DoctorController

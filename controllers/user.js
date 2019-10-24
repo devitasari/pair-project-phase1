@@ -32,7 +32,7 @@ class UserController {
     }
 
         //cari user dengan username tertentu
-        static login(req,res) {
+    static login(req,res) {
             let passInput = hashPass(req.body.pass)
             console.log(passInput);
             
@@ -55,7 +55,13 @@ class UserController {
             .catch((err) => {
                 res.send(err.message)
             });
-        }
+    }
+
+    static logout(req,res) {
+            req.session.destroy(() => {
+                res.send('logout succes');
+            });
+    }
     
 }
 
