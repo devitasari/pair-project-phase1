@@ -78,6 +78,7 @@ class DoctorController {
         })
         .then(() => {
             res.send('succes')
+            // res.render('loginDoctor')
         })
         .catch((err) => {
             res.send(err.message)

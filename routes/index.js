@@ -3,6 +3,7 @@ const DoctorController = require('../controllers/doctor')
 const UserController = require('../controllers/user')
 const DoctorUserController = require('../controllers/doctorUser')
 
+
 // ==================================== DOCTOR ===============================
 
 router.get('/doctors/:locationId/:SpecialisasiId', DoctorController.showAll) //untuk pencarian berdasarkan lokasi dan spesialisasi
@@ -55,5 +56,12 @@ router.get('/users/:UserId/delete/:DoctorUserId', DoctorUserController.delete)
 router.get('/users/:UserId', UserController.findOne) //untuk menampilkan daftar appoinment di halaman user
 
 
+
+
+
+// ========================================================= DUMMY ========================================================================
+router.get('/home', (req,res) => res.render('home'))
+router.get('/users', (req,res) => res.render('homeUser'))
+router.get('/doctors', (req,res) => res.render('homeDoctor'))
 
 module.exports = router
