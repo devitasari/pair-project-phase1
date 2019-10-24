@@ -36,7 +36,7 @@ class DoctorUserController {
                 id : req.params.DoctorUserId
             }
         }).then(() => {
-            res.send('succes')
+            res.redirect(`/users/${req.params.UserId}`)
         }).catch((err) => {
             res.send(err.message)
         });

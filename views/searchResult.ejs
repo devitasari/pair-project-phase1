@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
      <!-- Bootstrap core CSS -->
-    <link href="vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
 
     <!-- Custom styles for this template -->
     <link href="css/shop-homepage.css" rel="stylesheet">
@@ -102,7 +102,9 @@
             margin-right: auto;
             width: 100%;
         }
-
+        .card-body {
+            justify-content: space-between;
+        }
     </style>
 </head>
 <body>
@@ -125,10 +127,15 @@
     <div class="row">
         <div class="col-sm-6 mx-auto">
             <div class="card">
-                <div class="card-body">
-                    <h5 class="card-title"><%= doctors[i].addTitle() %></h5>
-                    <p class="card-text"><%= doctors[i].getDescription() %></p>
-                    <a href="/make-appointment" class="btn btn-primary">Make Appointment</a>
+                <div class="card-body row" style="display: flex; margin: 20px;">
+                    <div>
+                        <h4 class="card-title" ><strong><%= doctors[i].addTitle() %></strong></h4>
+                        <h5 class="card-text">Working Hours : <%= doctors[i].workingHours %></h5>
+                        <h5 class="card-text">Address : <%= doctors[i].address %></h5>
+                    </div>
+                    <div>
+                        <a href="/users/<%= userId %>/<%= doctors[i].id %>/add/appo" class="btn btn-primary">Make Appointment</a>
+                    </div>
                 </div>
             </div>
         </div>
