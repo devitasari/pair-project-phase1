@@ -102,6 +102,8 @@ router.get('/users/logout', loginMiddlewareUser, UserController.logout)
 // router.get('/dummy', (req,res) => res.render('dummyView'))
 // router.get('/index', (req,res) => res.render('index'))
 
+// router.get('/makeAppt', (req,res) => res.render('make-appointment'))
+
 
 
 module.exports = router
