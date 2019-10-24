@@ -23,7 +23,8 @@ class DoctorUserController {
             }
         })
         .then((result) => {
-            res.send(result)
+            console.log('masuk');
+            res.redirect(`/doctors/${req.params.DoctorId}`)
         }).catch((err) => {
             res.send(err.message)
         });

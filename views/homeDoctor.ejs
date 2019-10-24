@@ -295,11 +295,11 @@
             <p><%= `${users[i].DoctorUser.note}` %></p>
         </section>
         <nav class="btn-bar nav-dark">
-            <form action="" method="POST">
-                <button class="btn btn-glass btn-success" name="approve">
+            <form action="/doctors/edit/<%= users[i].DoctorUser.DoctorId %>/<%= users[i].DoctorUser.id %>" method="POST">
+                <button class="btn btn-glass btn-success" name="status" value="approve">
                     <i class="fa fa-fw fa-lg fa-check"></i> Approve
                 </button>
-                <button class="btn btn-glass btn-danger" name="reject">
+                <button class="btn btn-glass btn-danger" name="status" value="reject">
                     <i class="fa fa-fw fa-lg fa-times"></i> Reject
                 </button>
 

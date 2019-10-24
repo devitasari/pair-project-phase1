@@ -17,7 +17,7 @@ router.get('/', (req,res) => res.render('home'))
 
 
 // ==================================== DOCTOR ===============================
-router.get('/doctors/logout', loginMiddlewareDoctor, DoctorController.logout)
+router.get('/doctors/logout',  DoctorController.logout)
 router.get('/doctors/login', (req,res) => {
     res.render('loginDoctor')
 })
@@ -26,15 +26,18 @@ router.post('/doctors/register', DoctorController.register) //untuk register
 router.get('/doctors/register', (req,res) => {
     res.render('registerDoctor')
 })
-router.get('/doctors/:locationId/:SpecialisasiId', loginMiddlewareDoctor, DoctorController.showAll) //untuk pencarian berdasarkan lokasi dan spesialisasi
+
+router.post('/doctors/edit/:DoctorId/:DoctorUserId', DoctorUserController.edit)
+router.get('/doctors/:DoctorId',  DoctorController.showOne) //untuk menampilkan daftar appoinment dokter bisa diaprove/tidak
+// router.post('/doctors/:DoctorId',  DoctorController.showOne) //untuk menampilkan daftar appoinment dokter bisa diaprove/tidak
+router.get('/doctors/:locationId/:SpecialisasiId',  DoctorController.showAll) //untuk pencarian berdasarkan lokasi dan spesialisasi
 
 
-router.get('/doctors/:DoctorId', loginMiddlewareDoctor, DoctorController.showOne) //untuk menampilkan daftar appoinment dokter bisa diaprove/tidak
 
-router.get('/doctors/:DoctorId/edit/:DoctorUserId', loginMiddlewareDoctor, (req,res) => {
-    res.render('editStatus')
-})
-router.post('/doctors/:DoctorId/edit/:DoctorUserId', loginMiddlewareDoctor, DoctorUserController.edit) //untuk menanggapi appoinment
+// router.get('/doctors/:DoctorId/edit/:DoctorUserId',  (req,res) => {
+//     res.render('editStatus')
+// })
+// router.post('/doctors/:DoctorId/edit/:DoctorUserId',  DoctorUserController.edit) //untuk menanggapi appoinment
 
 
 
@@ -58,26 +61,26 @@ router.get('/users/login', (req,res) => {
 })
 router.post('/users/login', UserController.login) //untuk login
 
-router.get('/users/:UserId/search/doctors', loginMiddlewareUser, (req,res) => {
-    res.render('searchDoctor')
+router.get('/users/:UserId/search/doctors',  (req,res) => { 
+    res.render('homeUser')
 })
 router.post('/users/:UserId/search/doctors', DoctorController.showAll) //untuk cari dokter
 
-router.get('/users/:UserId/:DoctorId/add/appo', loginMiddlewareUser, (req,res) => { //untuk make appointment butuh id dokter 
+router.get('/users/:UserId/:DoctorId/add/appo',  (req,res) => { //untuk make appointment butuh id dokter 
     res.render('addNote')
 })
 
 router.post('/users/:UserId/:DoctorId/add/appo', DoctorUserController.create)
 
-router.get('/users/:UserId/edit/:DoctorUserId', loginMiddlewareUser, (req,res) => {
+router.get('/users/:UserId/edit/:DoctorUserId',  (req,res) => {
     res.render('editNote') //akan mengirim objek doctoruser id tertentu
 })
 
-router.get('/users/:UserId/delete/:DoctorUserId', loginMiddlewareUser, DoctorUserController.delete)
+router.get('/users/:UserId/delete/:DoctorUserId',  DoctorUserController.delete)
 
-router.get('/users/:UserId', loginMiddlewareUser, UserController.findOne) //untuk menampilkan daftar appoinment di halaman user
+router.get('/users/:UserId',  UserController.findOne) //untuk menampilkan daftar appoinment di halaman user
 
-router.get('/users/logout', loginMiddlewareUser, UserController.logout)
+router.get('/users/logout',  UserController.logout)
 
 
 
