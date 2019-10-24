@@ -47,6 +47,7 @@ class UserController {
                 if (!user || user.pass != passInput) res.send('Username/pass salah')
                 else {
                     req.session.user = { id : user.id }
+                    // res.send(user)
                     res.redirect(`/users/${user.id}`)
                 }
             })
