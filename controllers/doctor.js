@@ -24,14 +24,13 @@ class DoctorController {
     }
 
     static showOne(req,res) {
-        Doctor.findOne({
-            include: [User], 
+        DoctorUser.findAll({
             where: {
-                id: req.params.DoctorId
+                DoctorId: req.params.DoctorId
             }
-        }).then((doctor) => {
-            res.render('homeDoctor',{users :doctor.Users})
-            // res.send(result)
+        }).then((notes) => {
+            res.render('homeDoctor',{notes})
+            // res.send(notes)
         }).catch((err) => {
             res.send(err.message)
         });
@@ -45,6 +44,7 @@ class DoctorController {
             address : req.body.address,
             tarif : req.body.tarif,
             workingHours : req.body.workingHours,
+            rating : (Math.random()*5).toFixed(1),
             SpecialisasiId : req.body.SpecialisasiId,
             LocationId : req.body.LocationId,
             isLogin : 0
@@ -93,7 +93,7 @@ class DoctorController {
 
     static logout(req,res) {
             req.session.destroy(() => {
-                res.send('logout succes');
+                res.redirect('/');
             });
     }
 

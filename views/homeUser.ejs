@@ -432,7 +432,7 @@
             <div class="collapse navbar-collapse" id="navbarResponsive">
             <ul class="navbar-nav ml-auto">
                 <li class="nav-item active">
-                <a class="nav-link" href="/">Home</a>
+                <a class="nav-link" href="'/users/logout'">Logout</a>
                 </li>
             </ul>
             </div>
@@ -446,20 +446,13 @@
               <section>
                   <h2>Appointment With <%= `${user.Doctors[j].name}` %></h2>
                   <p><%= `${user.Doctors[j].DoctorUser.note}` %></p>
+                  <p><strong>Status : </strong><%= `${user.Doctors[j].DoctorUser.status}` %></p>
               </section>
-<<<<<<< HEAD
-            <div class="btn-bar nav-dark">
-              <a href="/users/<%= user.Doctors[j].DoctorUser[i].id %>/delete" class="btn btn-glass btn-danger">
-                <i class="fa fa-fw fa-lg fa-check"></i> Delete
-              </a>
-            </div>
-=======
               <nav class="btn-bar nav-dark">
                   <a href="/users/<%= user.id %>/delete/<%= user.Doctors[j].DoctorUser.id %>" class="btn btn-glass btn-danger">
                     <i class="fa fa-fw fa-lg fa-check"></i> Delete
                   </a>
                 </nav>
->>>>>>> 1ba464c49a20afd6c3df39fa7d3f5d248ee1f360
           </article>
         <% } %>
         <br>

@@ -280,7 +280,7 @@
             <div class="collapse navbar-collapse" id="navbarResponsive">
             <ul class="navbar-nav ml-auto">
                 <li class="nav-item active">
-                <a class="nav-link" href="/loginregister">Login / Register</a>
+                <a class="nav-link" href="'/users/logout'">Logout</a>
                 </li>
             </ul>
             </div>
@@ -289,9 +289,9 @@
     <br>
     <h2 style="font-family: Arial, Helvetica, sans-serif;"> Make Appointment </h2>
     <article>
-        <form action="link untuk create note" method="POST">
+        <form action="/users/<%= UserId %>/<%= DoctorId %>/add/appo" method="POST">
             <div class="md-form md-outline">
-                <textarea id="form75" class="md-textarea form-control" rows="5"></textarea>
+                <textarea id="form75" class="md-textarea form-control" rows="5" name="note"></textarea>
                 <br>
             </div>
             <div class="btn-bar nav-dark">
