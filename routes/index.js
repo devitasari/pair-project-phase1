@@ -84,5 +84,7 @@ router.get('/users/logout', loginMiddlewareUser, UserController.logout)
 router.get('/home', (req,res) => res.render('home'))
 router.get('/users', (req,res) => res.render('homeUser'))
 router.get('/doctors', (req,res) => res.render('homeDoctor'))
+router.get('/search', (req,res) => res.render('searchResult'))
+
 
 module.exports = router
