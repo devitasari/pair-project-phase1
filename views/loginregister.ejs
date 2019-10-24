@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Doctor Home Page</title>
+    <title>DocLoc</title>
     <!-- Bootstrap core CSS -->
     <link href="vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
 
@@ -271,41 +271,49 @@
 </head>
 <body>
     <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
-        <div class="container">
-            <a class="navbar-brand" href="/">DocLoc</a>
-            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
-            <span class="navbar-toggler-icon"></span>
-            </button>
-            <div class="collapse navbar-collapse" id="navbarResponsive">
-            <ul class="navbar-nav ml-auto">
-                <li class="nav-item active">
-                <a class="nav-link" href="/">Home</a>
-                </li>
-            </ul>
-            </div>
+      <div class="container">
+        <a class="navbar-brand" href="/">DocLoc</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarResponsive">
+          <ul class="navbar-nav ml-auto">
+            <li class="nav-item active">
+              <a class="nav-link" href="/">Home</a>
+            </li>
+          </ul>
         </div>
+      </div>
     </nav>
-    <h1>Doctor Home </h1>
-    <br>
-    <h2 style="font-family: Arial, Helvetica, sans-serif;"> Appointment List </h2>
-    <% for (let i=0; i<users.length; i++) { %>
-    <article>
-        <section>
-            <h2>Appointment From <%= `${users[i].name}` %></h2>
-            <p><%= `${users[i].DoctorUser.note}` %></p>
-        </section>
-        <nav class="btn-bar nav-dark">
-            <form action="/doctors/edit/<%= users[i].DoctorUser.DoctorId %>/<%= users[i].DoctorUser.id %>" method="POST">
-                <button class="btn btn-glass btn-success" name="status" value="approve">
-                    <i class="fa fa-fw fa-lg fa-check"></i> Approve
-                </button>
-                <button class="btn btn-glass btn-danger" name="status" value="reject">
-                    <i class="fa fa-fw fa-lg fa-times"></i> Reject
-                </button>
 
-            </form>
-        </nav>
-    </article>
-    <% } %>
+        <h1 style="font-family: 'Arial'; color: black"> DocLoc </h1>
+        <br>
+        <br>
+
+        <h2 style="font-family: 'Arial'; text-align: center; color: black;">User Login</h2>
+        <article>
+          <nav class="btn-bar nav-light">
+            <a href="/users/register" class="btn btn-glass">
+              Register
+            </a>
+            <a href="/users/login" class="btn btn-glass btn-primary">
+              <i class="fa fa-fw fa-lg fa-chevron-right"></i> Login
+            </a>
+          </nav>
+        </article>
+        <br>
+        <br>
+
+        <h2 style="font-family: 'Arial'; text-align: center; color: black;">Doctor Login</h2>
+        <article>
+          <nav class="btn-bar nav-dark">
+            <a href="/doctors/register" class="btn btn-glass">
+              Register
+            </a>
+            <a href="/doctors/login" class="btn btn-glass btn-primary">
+              <i class="fa fa-fw fa-lg fa-chevron-right"></i> Login
+            </a>
+          </nav>
+        </article>
 </body>
 </html>
