@@ -6,7 +6,7 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Doctor Home Page</title>
     <!-- Bootstrap core CSS -->
-    <link href="vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
 
     <!-- Custom styles for this template -->
     <link href="css/shop-homepage.css" rel="stylesheet">
@@ -279,7 +279,7 @@
             <div class="collapse navbar-collapse" id="navbarResponsive">
             <ul class="navbar-nav ml-auto">
                 <li class="nav-item active">
-                <a class="nav-link" href="/">Home</a>
+                <a class="nav-link" href="/loginregister">Login / Register</a>
                 </li>
             </ul>
             </div>
@@ -294,7 +294,7 @@
             <h2>Appointment From <%= `${users[i].name}` %></h2>
             <p><%= `${users[i].DoctorUser.note}` %></p>
         </section>
-        <nav class="btn-bar nav-dark">
+        <div class="btn-bar nav-dark">
             <form action="/doctors/edit/<%= users[i].DoctorUser.DoctorId %>/<%= users[i].DoctorUser.id %>" method="POST">
                 <button class="btn btn-glass btn-success" name="status" value="approve">
                     <i class="fa fa-fw fa-lg fa-check"></i> Approve
@@ -302,9 +302,8 @@
                 <button class="btn btn-glass btn-danger" name="status" value="reject">
                     <i class="fa fa-fw fa-lg fa-times"></i> Reject
                 </button>
-
             </form>
-        </nav>
+        </div>
     </article>
     <% } %>
 </body>

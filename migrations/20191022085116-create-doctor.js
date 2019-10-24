@@ -29,7 +29,7 @@ module.exports = {
       rating: {
         type: Sequelize.DECIMAL
       },
-      SpesialisasiId: {
+      SpecialisasiId: {
         type: Sequelize.INTEGER
       },
       LocationId: {
