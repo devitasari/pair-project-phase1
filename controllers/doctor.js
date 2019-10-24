@@ -8,7 +8,7 @@ class DoctorController {
 
     //cari dokter berdasarkan lokasi dan spesialisasi
     static showAll(req,res) {
-        Doctor.findAll({include:[Location,Specialisasi]}, {
+        Doctor.findAll({include:[Location,Specialisasi],
             where: {
                 LocationId : req.params.LocationId,
                 SpecialisasiId : req.params.SpecialisasiId
@@ -24,8 +24,7 @@ class DoctorController {
 
     static showOne(req,res) {
         Doctor.findOne({
-            include: [User]
-        }, {
+            include: [User], 
             where: {
                 id: req.params.DoctorId
             }
@@ -48,8 +47,18 @@ class DoctorController {
             LocationId : req.body.LocationId,
             isLogin : 0
         })
-        .then((result) => {
-            res.send(result)   
+        .then((succes) => {
+            Doctor.findOne({
+                where : {
+                    name: req.body.name
+                }
+            })
+            .then(doctor => {
+                req.session.user = {
+                    name : req.body.name
+                }
+                res.redirect(`/doctors/${doctor.id}`)
+            })   
         }).catch((err) => {
             res.send(err)
         });
@@ -61,28 +70,26 @@ class DoctorController {
         Doctor.findOne({
             where : {
                 name : req.body.name,
-                pass : passInput
             }
         })
         .then((doctor) => {
-            if (!doctor) res.send('Username/pass salah')
+            if (!doctor ||  doctor.pass != passInput) res.send('Username/pass salah')
             else {
-                Doctor.update({
-                    isLogin : 1
-                },{
-                    where : {
-                        id : doctor.id
-                    }
-                })
+                req.session.doctor = { id : doctor.id }
+                res.send(req.session)
             }
-        })
-        .then(() => {
-            res.send('succes')
         })
         .catch((err) => {
             res.send(err.message)
         });
     }
+
+    static logout(req,res) {
+            req.session.destroy(() => {
+                res.send('logout succes');
+            });
+    }
+
 
 }
 

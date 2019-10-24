@@ -6,9 +6,7 @@ const hashPass = require('../helpers/hashPassword')
 class UserController {
 
     static findOne(req,res) {
-        //Executing (default): SELECT "id", "name", "email", "pass", "createdAt", "updatedAt", "DoctorUserDoctorId" FROM "Users" AS "User" WHERE "User"."id" = '1';
-
-        User.findOne( {include:[Doctor]}, {
+        User.findOne( {include:[Doctor],
             where: {
                 id :   req.params.UserId
             }
@@ -34,24 +32,21 @@ class UserController {
     }
 
         //cari user dengan username tertentu
-        static login(req,res) {
-            let passInput = hashPassword(req.body.pass)
-            Doctor.findOne({
+    static login(req,res) {
+            let passInput = hashPass(req.body.pass)
+            console.log(passInput);
+            
+            User.findOne({
                 where : {
-                    name : req.body.name,
-                    pass : passInput
+                    name : req.body.name
                 }
             })
             .then((user) => {
-                if (!user) res.send('Username/pass salah')
+                
+                if (!user || user.pass != passInput) res.send('Username/pass salah')
                 else {
-                    User.update({
-                        isLogin : 1
-                    },{
-                        where : {
-                            id : user.id
-                        }
-                    })
+                    req.session.user = { id : user.id }
+                    res.send(req.session)
                 }
             })
             .then(() => {
@@ -60,7 +55,13 @@ class UserController {
             .catch((err) => {
                 res.send(err.message)
             });
-        }
+    }
+
+    static logout(req,res) {
+            req.session.destroy(() => {
+                res.send('logout succes');
+            });
+    }
     
 }
 
