@@ -26,9 +26,9 @@ module.exports = (sequelize, DataTypes) => {
     // associations can be defined here
 
 
+    // Doctor.belongsTo(models.DoctorUser)
     Doctor.belongsTo(models.Location)
     Doctor.belongsTo(models.Specialisasi)
-
 
     Doctor.belongsToMany(models.User, {
       through : models.DoctorUser

@@ -2,6 +2,7 @@ const Doctor = require('../models').Doctor
 const Location = require('../models').Location
 const Specialisasi = require('../models').Specialisasi
 const User = require('../models').User
+const DoctorUser = require('../models').DoctorUser
 const hashPassword = require('../helpers/hashPassword')
 
 class DoctorController {
@@ -70,13 +71,15 @@ class DoctorController {
         Doctor.findOne({
             where : {
                 name : req.body.name,
-            }
+            },
+            include : [User]
         })
         .then((doctor) => {
             if (!doctor ||  doctor.pass != passInput) res.send('Username/pass salah')
             else {
                 req.session.doctor = { id : doctor.id }
-                res.send(req.session)
+                res.send(doctor.Users)
+                res.render('homeDoctor',{doctor})
             }
         })
         .catch((err) => {
