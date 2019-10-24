@@ -16,7 +16,7 @@ class DoctorController {
             }
         })
         .then((doctors) => {
-            res.render('searchResult',{doctors})
+            res.render('searchResult',{doctors,userId: req.session.user.id})
         })
         .catch((err) => {
             res.send(err.message)

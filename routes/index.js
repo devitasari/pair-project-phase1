@@ -69,7 +69,7 @@ router.get('/users/:UserId/search/doctors',  (req,res) => {
 router.post('/users/:UserId/search/doctors', DoctorController.showAll) //untuk cari dokter
 
 router.get('/users/:UserId/:DoctorId/add/appo',  (req,res) => { //untuk make appointment butuh id dokter 
-    res.render('addNote')
+    res.render('make-appointment')
 })
 
 router.post('/users/:UserId/:DoctorId/add/appo', DoctorUserController.create)
