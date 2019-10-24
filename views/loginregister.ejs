@@ -4,13 +4,13 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>DocLoc</title>
     <!-- Bootstrap core CSS -->
     <link href="vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
 
     <!-- Custom styles for this template -->
     <link href="css/shop-homepage.css" rel="stylesheet">
     <link href="/public/css/shop-homepage.css" rel="stylesheet">
-    <title>User Home Page</title>
     <style>
         .btn-glass {
         flex-grow: 1;
@@ -267,231 +267,53 @@
         font-size: 5vw;
         color: rgba(255, 255, 255, 0.3);
         }
-        .dropdownContainer {
-        margin: 80px auto;
-        width: 400px;
-        text-align: center;
-        }
-
-        .dropdownContainer > .dropdown {
-        margin: 0 20px;
-        vertical-align: top;
-        }
-
-        .dropdown {
-        display: inline-block;
-        position: relative;
-        overflow: hidden;
-        height: 28px;
-        width: 150px;
-        background: #f2f2f2;
-        border: 1px solid;
-        border-color: white #f7f7f7 whitesmoke;
-        border-radius: 3px;
-        background-image: -webkit-linear-gradient(top, transparent, rgba(0, 0, 0, 0.06));
-        background-image: -moz-linear-gradient(top, transparent, rgba(0, 0, 0, 0.06));
-        background-image: -o-linear-gradient(top, transparent, rgba(0, 0, 0, 0.06));
-        background-image: linear-gradient(to bottom, transparent, rgba(0, 0, 0, 0.06));
-        -webkit-box-shadow: 0 1px 1px rgba(0, 0, 0, 0.08);
-        box-shadow: 0 1px 1px rgba(0, 0, 0, 0.08);
-        }
-
-        .dropdown:before, .dropdown:after {
-        content: '';
-        position: absolute;
-        z-index: 2;
-        top: 9px;
-        right: 10px;
-        width: 0;
-        height: 0;
-        border: 4px dashed;
-        border-color: #888888 transparent;
-        pointer-events: none;
-        }
-
-        .dropdown:before {
-        border-bottom-style: solid;
-        border-top: none;
-        }
-
-        .dropdown:after {
-        margin-top: 7px;
-        border-top-style: solid;
-        border-bottom: none;
-        }
-
-        .dropdown-select {
-        position: relative;
-        width: 130%;
-        margin: 0;
-        padding: 6px 8px 6px 10px;
-        height: 28px;
-        line-height: 14px;
-        font-size: 12px;
-        color: #62717a;
-        text-shadow: 0 1px white;
-        background: #f2f2f2; /* Fallback for IE 8 */
-        background: rgba(0, 0, 0, 0) !important; /* "transparent" doesn't work with Opera */
-        border: 0;
-        border-radius: 0;
-        -webkit-appearance: none;
-        }
-
-        .dropdown-select:focus {
-        z-index: 3;
-        width: 100%;
-        color: #394349;
-        outline: 2px solid #49aff2;
-        outline: 2px solid -webkit-focus-ring-color;
-        outline-offset: -2px;
-        }
-
-        .dropdown-select > option {
-        margin: 3px;
-        padding: 6px 8px;
-        text-shadow: none;
-        background: #f2f2f2;
-        border-radius: 3px;
-        cursor: pointer;
-        }
-
-        /* Fix for IE 8 putting the arrows behind the select element. */
-
-        .lt-ie9 .dropdown {
-        z-index: 1;
-        }
-
-        .lt-ie9 .dropdown-select {
-        z-index: -1;
-        }
-
-        .lt-ie9 .dropdown-select:focus {
-        z-index: 3;
-        }
-
-        /* Dirty fix for Firefox adding padding where it shouldn't. */
-
-        @-moz-document url-prefix() {
-        .dropdown-select {
-            padding-left: 6px;
-        }
-        }
-
-        .dropdown-dark {
-        background: #444;
-        border-color: #111111 #0a0a0a black;
-        background-image: -webkit-linear-gradient(top, transparent, rgba(0, 0, 0, 0.4));
-        background-image: -moz-linear-gradient(top, transparent, rgba(0, 0, 0, 0.4));
-        background-image: -o-linear-gradient(top, transparent, rgba(0, 0, 0, 0.4));
-        background-image: linear-gradient(to bottom, transparent, rgba(0, 0, 0, 0.4));
-        -webkit-box-shadow: inset 0 1px rgba(255, 255, 255, 0.1), 0 1px 1px rgba(0, 0, 0, 0.2);
-        box-shadow: inset 0 1px rgba(255, 255, 255, 0.1), 0 1px 1px rgba(0, 0, 0, 0.2);
-        }
-
-        .dropdown-dark:before {
-        border-bottom-color: #aaa;
-        }
-
-        .dropdown-dark:after {
-        border-top-color: #aaa;
-        }
-
-        .dropdown-dark .dropdown-select {
-        color: #aaa;
-        text-shadow: 0 1px black;
-        background: #444;  /* Fallback for IE 8 */
-        }
-
-        .dropdown-dark .dropdown-select:focus {
-        color: #ccc;
-        }
-
-        .dropdown-dark .dropdown-select > option {
-        background: #444;
-        text-shadow: 0 1px rgba(0, 0, 0, 0.4);
-        }
-        #box {
-            display: flex;
-            flex-direction: row;
-        }
-        #row {
-            width: 100%;
-        }
-        #column {
-            width: 25vw;
-        }
     </style>
 </head>
 <body>
     <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
-        <div class="container">
-            <a class="navbar-brand" href="/">DocLoc</a>
-            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
-            <span class="navbar-toggler-icon"></span>
-            </button>
-            <div class="collapse navbar-collapse" id="navbarResponsive">
-            <ul class="navbar-nav ml-auto">
-                <li class="nav-item active">
-                <a class="nav-link" href="/">Home</a>
-                </li>
-            </ul>
-            </div>
+      <div class="container">
+        <a class="navbar-brand" href="/">DocLoc</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarResponsive">
+          <ul class="navbar-nav ml-auto">
+            <li class="nav-item active">
+              <a class="nav-link" href="/">Home</a>
+            </li>
+          </ul>
         </div>
+      </div>
     </nav>
-        <h1 >User Home </h1>
-        <br>
-        <h2 style="font-family: Arial, Helvetica, sans-serif;"> Appointment List </h2>
-        <% for (let j=0; j<user.Doctors.length; j++) { %>
-          <% for (let i=0; i<user.Doctors[j].length; i++) { %>
-          <article>
-              <section>
-                  <h2>Appointment With <%= `${user.Doctors[j].name}` %></h2>
-                  <p><%= `${user.Doctors[j].DoctorUser[i].note}` %></p>
-              </section>
-            <nav class="btn-bar nav-dark">
-              <a href="/users/<%= user.Doctors[j].DoctorUser[i].id %>/delete" class="btn btn-glass btn-danger">
-                <i class="fa fa-fw fa-lg fa-check"></i> Delete
-              </a>
-            </nav>
-          </article>
-          <% } %>
-        <% } %>
+
+        <h1 style="font-family: 'Arial'; color: black"> DocLoc </h1>
         <br>
         <br>
-        <h2 style="font-family: Arial, Helvetica, sans-serif;"> Find Doctors </h2>
+
+        <h2 style="font-family: 'Arial'; text-align: center; color: black;">User Login</h2>
         <article>
-            <form action="halaman cari dokter" method="POST">
-                <div id="box">
-                    <section class="dropdownContainer" id="row inline">
-                        <div class="dropdown" id="column">
-                          <select name="SpecialisasiId" class="dropdown-select">
-                            <option value="">Specilization Category</option>
-                            <option value="1">General Practicioner</option>
-                            <option value=2> Dental Care </option>
-                            <option value=3> Dermatology </option>
-                            <option value=4> Obstetrics and Gynecology </option>
-                            <option value=5> Pediatrics </option>
-                            <option value=6> Opthalmology </option>
-                          </select>
-                        </div>
-                        <div class="dropdown dropdown-dark" id="column">
-                          <select name="Locationid" class="dropdown-select">
-                            <option value=null> Location </option>
-                            <option value=1> South Jakarta </option>
-                            <option value=2> North Jakarta </option>
-                            <option value=3> Central Jakarta </option>
-                            <option value=4> West Jakarta </option>
-                            <option value=5> East Jakarta </option>
-                          </select>
-                        </div>
-                      </section>
-                      <nav class="btn-bar nav-light">
-                          <button id="row">
-                              <input style="height: 25vh;" type="submit" value="Find Doctor"class="btn btn-glass btn-info">
-                          </button>
-                      </nav>
-                </div>
-            </form>
+          <nav class="btn-bar nav-light">
+            <a href="/users/register" class="btn btn-glass">
+              Register
+            </a>
+            <a href="/users/login" class="btn btn-glass btn-primary">
+              <i class="fa fa-fw fa-lg fa-chevron-right"></i> Login
+            </a>
+          </nav>
+        </article>
+        <br>
+        <br>
+
+        <h2 style="font-family: 'Arial'; text-align: center; color: black;">Doctor Login</h2>
+        <article>
+          <nav class="btn-bar nav-dark">
+            <a href="/doctors/register" class="btn btn-glass">
+              Register
+            </a>
+            <a href="/doctors/login" class="btn btn-glass btn-primary">
+              <i class="fa fa-fw fa-lg fa-chevron-right"></i> Login
+            </a>
+          </nav>
         </article>
 </body>
 </html>
