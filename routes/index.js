@@ -67,6 +67,7 @@ router.get('/users/login', (req,res) => {
     res.render('loginUser')
 })
 router.post('/users/login', UserController.login) //untuk login
+router.get('/users/logout', loginMiddlewareUser, UserController.logout)
 router.get('/users/:UserId', loginMiddlewareUser, UserController.findOne) //untuk menampilkan daftar appoinment di halaman user
 
 router.get('/users/:UserId/search/doctors', loginMiddlewareUser, (req,res) => { 
@@ -89,7 +90,6 @@ router.get('/users/:UserId/edit/:DoctorUserId',  (req,res) => {
 router.get('/users/:UserId/delete/:DoctorUserId', loginMiddlewareUser,  DoctorUserController.delete)
 
 
-router.get('/users/logout', loginMiddlewareUser, UserController.logout)
 
 
 
