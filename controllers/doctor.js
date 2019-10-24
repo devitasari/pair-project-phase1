@@ -87,9 +87,6 @@ class DoctorController {
         });
     }
 
-    static home(req,res) {
-        Doctor
-    }
 
     static logout(req,res) {
             req.session.destroy(() => {
