@@ -267,21 +267,25 @@
     <h1>Doctor Home </h1>
     <br>
     <h2 style="font-family: Arial, Helvetica, sans-serif;"> Appointment List </h2>
+    <% for (let i=0; i<users.length; i++) { %>
     <article>
         <section>
-            <h2>Check out when they scroll...</h2>
-            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Impedit, nisi voluptate tempora ea molestias vel! Mollitia architecto, accusamus nulla rerum magnam, nisi, facilis praesentium, aut quia placeat tempora voluptatem repudiandae!</p>
-            <p>Nesciunt, molestias commodi totam vitae, voluptates debitis repellendus modi dicta dolores dolorem beatae laboriosam eaque, sed. Dolorem fuga voluptatibus vero eveniet iure. Sed nemo saepe delectus, expedita asperiores, dolor illo.</p>
-            <p>Cum aspernatur, quidem dolorum accusamus quod vel, rem inventore tempora voluptas dolore deserunt eveniet doloribus obcaecati nesciunt error in illum, molestias explicabo corrupti commodi natus dicta placeat. A, laudantium, impedit.</p>
+            <h2>Appointment From <%= `${users[i].name}` %></h2>
+            <p><%= `${users[i].DoctorUser.note}` %></p>
         </section>
         <nav class="btn-bar nav-dark">
-            <a href="#" class="btn btn-glass btn-success">
-                <i class="fa fa-fw fa-lg fa-check"></i> Approve
-            </a>
-            <a href="#" class="btn btn-glass btn-danger">
-                <i class="fa fa-fw fa-lg fa-times"></i> Reject
-            </a>
+            <form action="" method="POST">
+                    <a href="#" class="btn btn-glass btn-success">
+                        <i class="fa fa-fw fa-lg fa-check"></i> Approve
+                    </a>
+                    <a href="#" class="btn btn-glass btn-danger">
+                        <i class="fa fa-fw fa-lg fa-times"></i> Reject
+                    </a>
+            </form>
+            
+            
         </nav>
     </article>
+    <% } %>
 </body>
 </html>
