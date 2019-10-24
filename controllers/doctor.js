@@ -75,7 +75,7 @@ class DoctorController {
             }
         })
         .then((doctor) => {
-            if (!doctor ||  doctor.pass != passInput) res.send('Username/pass salah')
+            if (!doctor ||  doctor.pass != passInput) res.redirect('/')
             else {
                 req.session.doctor = { id : doctor.id }
                 // res.send(doctor.Users)

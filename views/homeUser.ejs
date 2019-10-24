@@ -4,13 +4,13 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>User Home Page</title>
     <!-- Bootstrap core CSS -->
-    <link href="vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
 
     <!-- Custom styles for this template -->
     <link href="css/shop-homepage.css" rel="stylesheet">
     <link href="/public/css/shop-homepage.css" rel="stylesheet">
-    <title>User Home Page</title>
     <style>
         .btn-glass {
         flex-grow: 1;
@@ -463,7 +463,7 @@
                 <div id="box">
                     <section class="dropdownContainer" id="row inline">
                         <div class="dropdown" id="column">
-                          <select name="SpecialisasiId" class="dropdown-select">
+                          <select name="SpecialisasiId" class="dropdown-select" required>
                             <option value="">Specilization Category</option>
                             <option value="1">General Practicioner</option>
                             <option value=2> Dental Care </option>
@@ -474,7 +474,7 @@
                           </select>
                         </div>
                         <div class="dropdown dropdown-dark" id="column">
-                          <select name="LocationId" class="dropdown-select">
+                          <select name="LocationId" class="dropdown-select" required>
                             <option value=null> Location </option>
                             <option value=1> South Jakarta </option>
                             <option value=2> North Jakarta </option>

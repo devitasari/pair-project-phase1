@@ -54,6 +54,10 @@ router.get('/doctors/:locationId/:SpecialisasiId', loginMiddlewareUser, DoctorCo
 
 
 
+router.get('/loginregister', (req,res) => {
+    res.render('loginregister')
+})
+
 router.get('/users/register', (req,res) => {
     res.render('registerUser')
 })
@@ -97,6 +101,8 @@ router.get('/users/logout', loginMiddlewareUser, UserController.logout)
 // router.get('/search', (req,res) => res.render('searchResult'))
 // router.get('/dummy', (req,res) => res.render('dummyView'))
 // router.get('/index', (req,res) => res.render('index'))
+
+// router.get('/makeAppt', (req,res) => res.render('make-appointment'))
 
 
 
