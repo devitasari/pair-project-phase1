@@ -279,7 +279,7 @@
             <div class="collapse navbar-collapse" id="navbarResponsive">
             <ul class="navbar-nav ml-auto">
                 <li class="nav-item active">
-                <a class="nav-link" href="/">Home</a>
+                <a class="nav-link" href="/doctors/logout">logout</a>
                 </li>
             </ul>
             </div>
@@ -288,14 +288,14 @@
     <h1>Doctor Home </h1>
     <br>
     <h2 style="font-family: Arial, Helvetica, sans-serif;"> Appointment List </h2>
-    <% for (let i=0; i<users.length; i++) { %>
+    <% for (let i=0; i<notes.length; i++) { %>
     <article>
         <section>
-            <h2>Appointment From <%= `${users[i].name}` %></h2>
-            <p><%= `${users[i].DoctorUser.note}` %></p>
+            <h2>Appointment <%= `${i+1}` %></h2>
+            <p><%= `${notes[i].note}` %></p>
         </section>
         <nav class="btn-bar nav-dark">
-            <form action="/doctors/edit/<%= users[i].DoctorUser.DoctorId %>/<%= users[i].DoctorUser.id %>" method="POST">
+            <form action="/doctors/edit/<%= notes[i].DoctorId %>/<%= notes[i].id %>" method="POST">
                 <button class="btn btn-glass btn-success" name="status" value="approve">
                     <i class="fa fa-fw fa-lg fa-check"></i> Approve
                 </button>
