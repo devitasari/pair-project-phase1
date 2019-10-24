@@ -12,7 +12,8 @@ class UserController {
             }
         }
         ).then((user) => {
-            res.send(user)
+            res.render('homeUser',{user})
+            // res.send(user)
         }).catch((err) => {
             res.send(err.message)
         });
@@ -46,12 +47,10 @@ class UserController {
                 if (!user || user.pass != passInput) res.send('Username/pass salah')
                 else {
                     req.session.user = { id : user.id }
-                    res.send(req.session)
+                    res.redirect(`/users/${user.id}`)
                 }
             })
-            .then(() => {
-                res.send('succes')
-            })
+
             .catch((err) => {
                 res.send(err.message)
             });

@@ -29,8 +29,9 @@ class DoctorController {
             where: {
                 id: req.params.DoctorId
             }
-        }).then((result) => {
-            res.send(result)
+        }).then((doctor) => {
+            res.render('homeDoctor',{users :doctor.Users})
+            // res.send(result)
         }).catch((err) => {
             res.send(err.message)
         });
@@ -58,7 +59,7 @@ class DoctorController {
                 req.session.user = {
                     name : req.body.name
                 }
-                res.redirect(`/doctors/${doctor.id}`)
+                res.redirect(`/`)
             })   
         }).catch((err) => {
             res.send(err)
@@ -71,20 +72,23 @@ class DoctorController {
         Doctor.findOne({
             where : {
                 name : req.body.name,
-            },
-            include : [User]
+            }
         })
         .then((doctor) => {
             if (!doctor ||  doctor.pass != passInput) res.send('Username/pass salah')
             else {
                 req.session.doctor = { id : doctor.id }
-                res.send(doctor.Users)
-                res.render('homeDoctor',{doctor})
+                // res.send(doctor.Users)
+                res.redirect(`/doctors/${doctor.id}`)
             }
         })
         .catch((err) => {
             res.send(err.message)
         });
+    }
+
+    static home(req,res) {
+        Doctor
     }
 
     static logout(req,res) {
