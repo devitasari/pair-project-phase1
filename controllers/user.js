@@ -26,7 +26,7 @@ class UserController {
             pass : req.body.pass
         })
         .then((result) => {
-            res.send(result)
+            res.redirect('/')
         }).catch((err) => {
             res.send(err.message)
         });

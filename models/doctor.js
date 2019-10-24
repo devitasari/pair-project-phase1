@@ -2,7 +2,16 @@
 module.exports = (sequelize, DataTypes) => {
   const Model = sequelize.Sequelize.Model
   const hashPassword = require('../helpers/hashPassword')
-  class Doctor extends Model {}
+  class Doctor extends Model {
+
+    addTitle() {
+      return `dr. ${this.name}`
+    }
+
+    getDescription() {
+      return `Working Hours : ${this.workingHours} \n Address : ${this.address}`
+    }
+  }
 
   Doctor.init({
     name: DataTypes.STRING,
