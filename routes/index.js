@@ -78,4 +78,11 @@ router.get('/users/:UserId', loginMiddlewareUser, UserController.findOne) //untu
 
 router.get('/users/logout', loginMiddlewareUser, UserController.logout)
 
+
+
+// ========================================================= DUMMY ========================================================================
+router.get('/home', (req,res) => res.render('home'))
+router.get('/users', (req,res) => res.render('homeUser'))
+router.get('/doctors', (req,res) => res.render('homeDoctor'))
+
 module.exports = router
