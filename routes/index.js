@@ -82,7 +82,7 @@ router.get('/users/:UserId/edit/:DoctorUserId',  (req,res) => {
     res.render('editNote') //akan mengirim objek doctoruser id tertentu
 })
 
-router.get('/users/:UserId/delete/:DoctorUserId', loginMiddlewareDoctor,  DoctorUserController.delete)
+router.get('/users/:UserId/delete/:DoctorUserId', loginMiddlewareUser,  DoctorUserController.delete)
 
 
 router.get('/users/logout', loginMiddlewareUser, UserController.logout)
