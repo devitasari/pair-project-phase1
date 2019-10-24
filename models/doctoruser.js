@@ -4,6 +4,10 @@ module.exports = (sequelize, DataTypes) => {
   class DoctorUser extends Model {}
 
   DoctorUser.init({
+    id : {
+      type: DataTypes.INTEGER,
+      primaryKey: true
+    },
     DoctorId: DataTypes.INTEGER,
     UserId: DataTypes.INTEGER,
     note: DataTypes.STRING,
