@@ -11,12 +11,12 @@ class DoctorController {
     static showAll(req,res) {
         Doctor.findAll({include:[Location,Specialisasi],
             where: {
-                LocationId : req.params.LocationId,
-                SpecialisasiId : req.params.SpecialisasiId
+                LocationId : req.body.LocationId,
+                SpecialisasiId : req.body.SpecialisasiId
             }
         })
-        .then((result) => {
-            res.send(result)
+        .then((doctors) => {
+            res.render('searchResult',{doctors})
         })
         .catch((err) => {
             res.send(err.message)
