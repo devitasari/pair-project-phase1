@@ -5,5 +5,12 @@
     "database": "project",
     "host": "127.0.0.1",
     "dialect": "postgres"
+  },
+  "production": {
+    "username": "bgirtwjronwnqj",
+    "password": "3a181104e215eda7ff1a72aaa9faea3cfb63861a67e057e7616c7539b3fc60a9",
+    "database": "daljog1e9e0dql",
+    "host": "ec2-54-197-238-238.compute-1.amazonaws.com",
+    "dialect": "postgres"
   }
 }
