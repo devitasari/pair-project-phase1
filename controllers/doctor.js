@@ -13,7 +13,8 @@ class DoctorController {
             where: {
                 LocationId : req.body.LocationId,
                 SpecialisasiId : req.body.SpecialisasiId
-            }
+            },
+            order: [['rating', 'DESC']]
         })
         .then((doctors) => {
             res.render('searchResult',{doctors,userId: req.session.user.id})
